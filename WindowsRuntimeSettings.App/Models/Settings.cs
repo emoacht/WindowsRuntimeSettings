@@ -13,8 +13,7 @@ namespace WindowsRuntimeSettings.App.Models
 		private Settings()
 		{ }
 
-		public static Settings Current => _current;
-		private static readonly Settings _current = new Settings();
+		public static Settings Current { get; } = new Settings();
 
 		[Roaming]
 		public string Name

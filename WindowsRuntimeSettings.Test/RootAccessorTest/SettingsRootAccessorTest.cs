@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
@@ -58,7 +59,7 @@ namespace WindowsRuntimeSettings.Test.RootAccessorTest
 			var name = "UriValue";
 			var value = new Uri("http://www.visualstudio.com/");
 
-			Assert.ThrowsException<Exception>(() => _accessor.SetValue(value, name, false));
+			Assert.ThrowsException<COMException>(() => _accessor.SetValue(value, name, false));
 		}
 
 		[TestMethod]
@@ -67,7 +68,7 @@ namespace WindowsRuntimeSettings.Test.RootAccessorTest
 			var name = "DateTimeValue";
 			var value = DateTime.Now;
 
-			Assert.ThrowsException<Exception>(() => _accessor.SetValue(value, name, false));
+			Assert.ThrowsException<COMException>(() => _accessor.SetValue(value, name, false));
 		}
 
 		[TestMethod]
@@ -76,7 +77,7 @@ namespace WindowsRuntimeSettings.Test.RootAccessorTest
 			var name = "ColorValue";
 			var value = Colors.Chocolate;
 
-			Assert.ThrowsException<Exception>(() => _accessor.SetValue(value, name, false));
+			Assert.ThrowsException<COMException>(() => _accessor.SetValue(value, name, false));
 		}
 
 		[TestMethod]

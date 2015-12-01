@@ -127,6 +127,7 @@ namespace WindowsRuntimeSettings.Accessor
 					(x.GetType() == typeof(T)) &&
 					(x.RootAccessor == rootAccessor) &&
 					(x.IsRoaming == isRoaming));
+
 			if (accessor == null)
 			{
 				accessor = (IPropertyAccessor)Activator.CreateInstance(typeof(T), rootAccessor, isRoaming);

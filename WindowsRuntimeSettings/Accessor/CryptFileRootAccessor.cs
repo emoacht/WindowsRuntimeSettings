@@ -250,7 +250,7 @@ namespace WindowsRuntimeSettings.Accessor
 					container = (DataContainer)serializer.ReadObject(stream);
 				}
 
-				_knownTypes = (_knownTypes ?? new Type[] { })
+				_knownTypes = (_knownTypes ?? Array.Empty<Type>())
 					.Union(container.TypeNames.Select(x => Type.GetType(x)))
 					.ToArray();
 

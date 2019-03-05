@@ -18,50 +18,50 @@ namespace WindowsRuntimeSettings.App.Models
 		[Roaming]
 		public string Name
 		{
-			get { return GetValue<string>(); }
-			set { SetValue(value); }
+			get => GetValue<string>();
+			set => SetValue(value);
 		}
 
 		[Roaming]
 		public int Age
 		{
-			get { return GetValue<int>(); }
-			set { SetValue(value); }
+			get => GetValue<int>();
+			set => SetValue(value);
 		}
 
 		public RaceType Race
 		{
-			get { return GetValue(RaceType.Human); }
-			set { SetValue(value); }
+			get => GetValue(RaceType.Human);
+			set => SetValue(value);
 		}
 
 		[Roaming]
 		public Schedule Schedule
 		{
-			get { return GetValue<Schedule>(); }
-			set { SetValue(value); }
+			get => GetValue<Schedule>();
+			set => SetValue(value);
 		}
 
 		[CryptFile]
 		[Roaming]
 		public Point WayPoint
 		{
-			get { return GetValue<Point>(); }
-			set { SetValue(value); }
+			get => GetValue<Point>();
+			set => SetValue(value);
 		}
 
 		[CryptFile]
 		public Color SymbolColor
 		{
-			get { return GetValue(Colors.RoyalBlue); }
-			set { SetValue(value); }
+			get => GetValue(Colors.RoyalBlue);
+			set => SetValue(value);
 		}
 
 		[CryptVault]
 		public string SecretPhrase
 		{
-			get { return GetValue<string>(); }
-			set { SetValue(value); }
+			get => GetValue<string>();
+			set => SetValue(value);
 		}
 	}
 }

@@ -11,16 +11,12 @@ namespace WindowsRuntimeSettings.Accessor
 	/// </summary>
 	internal class PropertyAccessor : IPropertyAccessor
 	{
-		public PropertyAccessor()
-			: this(new SettingsRootAccessor())
+		public PropertyAccessor() : this(new SettingsRootAccessor())
 		{ }
 
 		public PropertyAccessor(IRootAccessor accessor, bool isRoaming = false)
 		{
-			if (accessor == null)
-				throw new ArgumentNullException(nameof(accessor));
-
-			_accessor = accessor;
+			_accessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
 			_isRoaming = isRoaming;
 		}
 

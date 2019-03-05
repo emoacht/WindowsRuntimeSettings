@@ -46,8 +46,8 @@ namespace WindowsRuntimeSettings.Accessor
 
 		#endregion
 
-		private const string _cryptVaultName = "Settings";
-		private const string _cryptFileName = "Settings";
+		private const string CryptVaultName = "Settings";
+		private const string CryptFileName = "Settings";
 
 		private readonly Dictionary<string, IPropertyAccessor> _accessorMap = new Dictionary<string, IPropertyAccessor>();
 		private readonly List<IPropertyAccessor> _accessorRepository = new List<IPropertyAccessor>();
@@ -56,8 +56,7 @@ namespace WindowsRuntimeSettings.Accessor
 		private readonly Lazy<IRootAccessor> _cryptVaultRootAccessor;
 		private readonly Lazy<IRootAccessor> _cryptFileRootAccessor;
 
-		public PropertyAccessorProvider()
-			: this(_cryptVaultName, _cryptFileName)
+		public PropertyAccessorProvider() : this(CryptVaultName, CryptFileName)
 		{ }
 
 		public PropertyAccessorProvider(string cryptVaultName, string cryptFileName)
@@ -124,9 +123,9 @@ namespace WindowsRuntimeSettings.Accessor
 		private IPropertyAccessor FindPropertyAccessor<T>(IRootAccessor rootAccessor, bool isRoaming) where T : IPropertyAccessor
 		{
 			var accessor = _accessorRepository.FirstOrDefault(x =>
-					(x.GetType() == typeof(T)) &&
-					(x.RootAccessor == rootAccessor) &&
-					(x.IsRoaming == isRoaming));
+				(x.GetType() == typeof(T)) &&
+				(x.RootAccessor == rootAccessor) &&
+				(x.IsRoaming == isRoaming));
 
 			if (accessor == null)
 			{

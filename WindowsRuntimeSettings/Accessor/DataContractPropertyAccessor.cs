@@ -13,16 +13,12 @@ namespace WindowsRuntimeSettings.Accessor
 	/// </summary>
 	internal class DataContractPropertyAccessor : IPropertyAccessor
 	{
-		public DataContractPropertyAccessor()
-			: this(new SettingsRootAccessor())
+		public DataContractPropertyAccessor() : this(new SettingsRootAccessor())
 		{ }
 
 		public DataContractPropertyAccessor(IRootAccessor accessor, bool isRoaming = false)
 		{
-			if (accessor == null)
-				throw new ArgumentNullException(nameof(accessor));
-
-			_accessor = accessor;
+			_accessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
 			_isRoaming = isRoaming;
 		}
 
@@ -36,15 +32,13 @@ namespace WindowsRuntimeSettings.Accessor
 
 		public T GetValue<T>(string propertyName)
 		{
-			T propertyValue;
-			TryGetValue(out propertyValue, propertyName);
+			TryGetValue(out T propertyValue, propertyName);
 			return propertyValue;
 		}
 
 		public T GetValue<T>(T defaultValue, string propertyName)
 		{
-			T propertyValue;
-			if (TryGetValue(out propertyValue, propertyName))
+			if (TryGetValue(out T propertyValue, propertyName))
 				return propertyValue;
 			else
 				return defaultValue;
@@ -52,8 +46,7 @@ namespace WindowsRuntimeSettings.Accessor
 
 		public bool TryGetValue<T>(out T propertyValue, string propertyName)
 		{
-			byte[] serializedData;
-			if (_accessor.TryGetValue(out serializedData, propertyName, _isRoaming))
+			if (_accessor.TryGetValue(out byte[] serializedData, propertyName, _isRoaming))
 			{
 				using (var ms = new MemoryStream())
 				{

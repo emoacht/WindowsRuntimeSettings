@@ -67,15 +67,13 @@ namespace WindowsRuntimeSettings.Accessor
 
 		public T GetValue<T>(string propertyName, bool isRoaming)
 		{
-			T propertyValue;
-			TryGetValue(out propertyValue, propertyName, isRoaming);
+			TryGetValue(out T propertyValue, propertyName, isRoaming);
 			return propertyValue;
 		}
 
 		public T GetValue<T>(T defaultValue, string propertyName, bool isRoaming)
 		{
-			T propertyValue;
-			if (TryGetValue(out propertyValue, propertyName, isRoaming))
+			if (TryGetValue(out T propertyValue, propertyName, isRoaming))
 				return propertyValue;
 			else
 				return defaultValue;

@@ -113,8 +113,7 @@ namespace WindowsRuntimeSettings.Test.RootAccessorTest
 			var name = "StringValue";
 
 			_accessor.SetValue<string>(null, name, false);
-			string value;
-			Assert.IsFalse(_accessor.TryGetValue(out value, name, false));
+			Assert.IsFalse(_accessor.TryGetValue(out string value, name, false));
 			Assert.AreEqual(null, value);
 		}
 
@@ -129,8 +128,7 @@ namespace WindowsRuntimeSettings.Test.RootAccessorTest
 		private void TestDefaultBase<T>(T defaultValue, string propertyName)
 		{
 			_accessor.SetValue(default(T), propertyName, false);
-			T value;
-			Assert.IsFalse(_accessor.TryGetValue(out value, propertyName, false));
+			Assert.IsFalse(_accessor.TryGetValue(out T value, propertyName, false));
 
 			Assert.AreEqual(default(T), _accessor.GetValue<T>(propertyName, false));
 			Assert.AreEqual(defaultValue, _accessor.GetValue(defaultValue, propertyName, false));

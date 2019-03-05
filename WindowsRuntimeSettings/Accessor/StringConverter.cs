@@ -27,8 +27,7 @@ namespace WindowsRuntimeSettings.Accessor
 				var serializer = new DataContractSerializer(typeof(T));
 				serializer.WriteObject(ms, value);
 
-				ArraySegment<byte> buff;
-				ms.TryGetBuffer(out buff); // This result should be always true.
+				ms.TryGetBuffer(out ArraySegment<byte> buff); // This result should be always true.
 
 				return Convert.ToBase64String(buff.Array, buff.Offset, buff.Count);
 			}

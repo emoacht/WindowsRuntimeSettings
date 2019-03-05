@@ -139,8 +139,7 @@ namespace WindowsRuntimeSettings.Test.RootAccessorTest
 		private void TestDefaultBase<T>(T defaultValue, string propertyName)
 		{
 			_accessor.SetValue(default(T), propertyName, false);
-			T value;
-			Assert.IsFalse(_accessor.TryGetValue(out value, propertyName, false));
+			Assert.IsFalse(_accessor.TryGetValue(out T value, propertyName, false));
 
 			Assert.AreEqual(default(T), _accessor.GetValue<T>(propertyName, false));
 			Assert.AreEqual(defaultValue, _accessor.GetValue(defaultValue, propertyName, false));

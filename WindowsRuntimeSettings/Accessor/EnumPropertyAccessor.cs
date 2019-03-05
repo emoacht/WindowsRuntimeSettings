@@ -11,16 +11,12 @@ namespace WindowsRuntimeSettings.Accessor
 	/// </summary>
 	internal class EnumPropertyAccessor : IPropertyAccessor
 	{
-		public EnumPropertyAccessor()
-			: this(new SettingsRootAccessor())
+		public EnumPropertyAccessor() : this(new SettingsRootAccessor())
 		{ }
 
 		public EnumPropertyAccessor(IRootAccessor accessor, bool isRoaming = false)
 		{
-			if (accessor == null)
-				throw new ArgumentNullException(nameof(accessor));
-
-			_accessor = accessor;
+			_accessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
 			_isRoaming = isRoaming;
 		}
 

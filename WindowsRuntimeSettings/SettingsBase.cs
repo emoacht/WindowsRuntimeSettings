@@ -14,16 +14,12 @@ namespace WindowsRuntimeSettings
 	{
 		private readonly IPropertyAccessorProvider _provider;
 
-		public SettingsBase()
-			: this(new PropertyAccessorProvider())
+		public SettingsBase() : this(new PropertyAccessorProvider())
 		{ }
 
 		internal SettingsBase(IPropertyAccessorProvider provider)
 		{
-			if (provider == null)
-				throw new ArgumentNullException(nameof(provider));
-
-			_provider = provider;
+			_provider = provider ?? throw new ArgumentNullException(nameof(provider));
 		}
 
 		#region Getter
@@ -53,8 +49,8 @@ namespace WindowsRuntimeSettings
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		protected void RaisePropertyChanged([CallerMemberName] string propertyName = null)
-			=> PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		protected void RaisePropertyChanged([CallerMemberName] string propertyName = null) =>
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
 		#endregion
 	}

@@ -17,30 +17,30 @@ namespace WindowsRuntimeSettings.Accessor
 		/// Windows Runtime base data types supported for the application settings
 		/// </summary>
 		/// <remarks>
-		/// https://msdn.microsoft.com/en-us/library/br205768.aspx
-		/// Excluded Uri and void types. Included byte[] type.
+		/// https://docs.microsoft.com/en-us/windows/uwp/design/app-settings/store-and-retrieve-app-data#types-of-app-data
+		/// plus DateTimeOffset and byte[].
 		/// </remarks>
 		private static readonly Type[] _baseTypes = new[]
 		{
-			typeof(bool),
 			typeof(byte),
-			typeof(char),
-			typeof(DateTimeOffset),
-			typeof(double),
-			typeof(Guid),
 			typeof(short),
-			typeof(int),
-			typeof(long),
-			typeof(object),
-			typeof(Point),
-			typeof(Rect),
-			typeof(float),
-			typeof(Size),
-			typeof(string),
-			typeof(TimeSpan),
 			typeof(ushort),
+			typeof(int),
 			typeof(uint),
+			typeof(long),
 			typeof(ulong),
+			typeof(float),
+			typeof(double),
+			typeof(bool),
+			typeof(char),
+			typeof(string),
+			typeof(DateTime),
+			typeof(DateTimeOffset),
+			typeof(TimeSpan),
+			typeof(Guid),
+			typeof(Point),
+			typeof(Size),
+			typeof(Rect),
 			typeof(byte[])
 		};
 
